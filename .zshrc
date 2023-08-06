@@ -1,8 +1,16 @@
 export OMZ=$HOME/.oh-my-zsh
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'batcat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 # alias
 alias lah="ls -lah"
-alias gadd="git add."
+alias gadd="git add ."
+alias gpod="git pull origin develop"
+alias gpl="git pull"
+alias gps="git push"
+alias gf="git fetch"
 
 # For saving history when using zsh
 HISTFILE=~/.zsh_history
@@ -29,7 +37,7 @@ source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # z - Jump around
-#source /home/uy/.oh-my-zsh/plugins/z/z.plugin.zsh
+source /home/uy/.oh-my-zsh/plugins/z/z.plugin.zsh
 
 # Plugins
 plugins=(z zsh-autosuggestions)
@@ -38,3 +46,7 @@ source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
