@@ -24,6 +24,8 @@ Set-PSReadLineKeyHandler -Key Tab -Function Complete
 Set-PSReadLineOption -PredictionSource History
 
 # Alias
+
+# Alias
 function get-git-fetch {
   git fetch
 }
@@ -60,20 +62,23 @@ function get-git-pull-origin {
 }
 Set-Alias -Name gpo -Value get-git-pull-origin
 
+$user = [Environment]::UserName
+$downloadPath = "C:\Users\$user\Downloads\secret_key"
+
 function run-db-dev {
-  cd C:\Users\admin\Downloads\secret_key
+  cd $downloadPath
   .\ncop-dev-cloudsql.bat
 }
 Set-Alias -Name dbdev -Value run-db-dev
 
 function run-db-test {
-  cd C:\Users\admin\Downloads\secret_key
+  cd $downloadPath
   .\ncop-test-cloudsql.bat
 }
 Set-Alias -Name dbtest -Value run-db-test
 
 function run-db-stg {
-  cd C:\Users\admin\Downloads\secret_key
+  cd $downloadPath
   .\ncop-stg-cloudsql.bat
 }
 Set-Alias -Name dbstg -Value run-db-stg
@@ -83,3 +88,4 @@ function run-db-ods {
   gcloud compute ssh sea1-uat-ods-pxy02 --tunnel-through-iap --zone=asia-southeast1-c --ssh-flag="-L 5444:localhost:5432"
 }
 Set-Alias -Name dbods -Value run-db-ods
+
